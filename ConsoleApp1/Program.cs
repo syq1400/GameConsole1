@@ -9,14 +9,12 @@ namespace ConsoleApp1
 	internal class Program
 	{
 		static Random rand = new Random();
-
 		
 		static void Main()
 		{
 			// user, don't save the user but save the name
 			Console.WriteLine("Please enter username:");
 			string firstName = Console.ReadLine();
-			Task.Delay(300).Wait(200);
 			Console.Clear();
 
 			// Menue
@@ -27,15 +25,11 @@ namespace ConsoleApp1
 
 				//a
 				Console.WriteLine("Hello," + firstName + "!");
-				Task.Delay(300).Wait(200);
 				Console.WriteLine("1 rockps");
-				Task.Delay(300).Wait(200);
 				Console.WriteLine("2 tictactoe");
-				Task.Delay(300).Wait(200);
 
 				//save user under a name for this
 				Console.WriteLine("3 leaderboard");
-				Task.Delay(300).Wait(200);
 				Console.WriteLine("4 settings or smth");
 
 
@@ -64,7 +58,6 @@ namespace ConsoleApp1
 					default:
 						Console.WriteLine("choose smth else");
 						Console.WriteLine("---");
-						Task.Delay(600);
 						break;
 
 				}
@@ -79,16 +72,47 @@ namespace ConsoleApp1
 			Console.Clear();
 
 			// select the rock paper sciccors
-			Task.Delay(300).Wait(200);
-			Console.WriteLine("1 pr rock 2 for s 3 for paper");
-			string RPS = Console.ReadLine();
+			string[] choices = { "Rock", "Scissors", "Paper" };
+			Console.WriteLine("1 pr rock");
+			Console.WriteLine("2 for s");
+			Console.WriteLine("3 for paper");
+			Console.WriteLine("4 to go back");
+			string userChoice = Console.ReadLine();
+			int i = 1;
 
-			//the thing actual
+			Console.WriteLine("You chose " + choices[i] );
 
+
+
+			//comupter select
+			Random rand = new Random();
+			string computerChoice = choices[rand.Next(choices.Length)];
+			Console.WriteLine("The computer chose " + computerChoice);
+
+			//suspense
+			Console.WriteLine(" ");
+			Console.WriteLine("...");
+			Console.WriteLine(" ");
+
+			//check
+			if (userChoice == computerChoice)
+            {
+				Console.WriteLine("tie");
+			}
+			else if (
+				(userChoice == "Rock" && computerChoice == "Scissors") || 
+				(userChoice == "Scissors" && computerChoice == "Paper") ||
+				(userChoice == "Scissors" && computerChoice == "Paper"))
+            {
+				Console.WriteLine("win");
+			}
+			else
+            {
+				Console.WriteLine("lose lmao");
+			}
+			Console.WriteLine(" ");
 
 			//go back, or stay
-			Console.Clear();
-			Task.Delay(300).Wait(200);
 			Console.WriteLine("1 to stay, any key to go back to menu");
 			string choice = Console.ReadLine();
 			switch (choice)
@@ -109,13 +133,11 @@ namespace ConsoleApp1
 			Console.Clear();
 
 			// select the ttt tile
-			Task.Delay(300).Wait(200);
 			Console.WriteLine("select tile, x's turn:");
-			string playerX = Console.ReadLine();
+			string playerXinput = Console.ReadLine();
 
-			Task.Delay(300).Wait(200);
 			Console.WriteLine("select tile, O's turn:");
-			string playerO = Console.ReadLine();
+			string playerOinput = Console.ReadLine();
 
 			//go back, or stay
 			Console.Clear();
