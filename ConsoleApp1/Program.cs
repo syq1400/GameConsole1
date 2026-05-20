@@ -72,43 +72,47 @@ namespace ConsoleApp1
 			Console.Clear();
 
 			// select the rock paper sciccors
-			string[] choices = { "Rock", "Scissors", "Paper" };
-			Console.WriteLine("1 pr rock");
-			Console.WriteLine("2 for s");
-			Console.WriteLine("3 for paper");
-			Console.WriteLine("4 to go back");
-			string userChoice = Console.ReadLine();
-			int i = 1;
+			string[] choices = { "rock", "scissors", "paper" };
+			bool isContained = true;
 
-			Console.WriteLine("You chose " + choices[i] );
+			Console.WriteLine("Enter rock, scissors or paper");
+			string userChoice = Console.ReadLine().ToLower();
 
-
+			// check
+			if (choices.Contains(userChoice))
+			{
+				Console.WriteLine("\nYou chose " + userChoice + "!");	
+			}
+			else
+			{
+				Console.WriteLine("Invalid option, type your choice correctly.");
+				Task.Wait();
+				rock();
+			}
 
 			//comupter select
 			Random rand = new Random();
 			string computerChoice = choices[rand.Next(choices.Length)];
-			Console.WriteLine("The computer chose " + computerChoice);
+			Console.WriteLine("The computer chose " + computerChoice + "!");
 
 			//suspense
-			Console.WriteLine(" ");
-			Console.WriteLine("...");
-			Console.WriteLine(" ");
+			Console.WriteLine("\n ... \n");
 
 			//check
 			if (userChoice == computerChoice)
-            {
+			{
 				Console.WriteLine("tie");
 			}
 			else if (
-				(userChoice == "Rock" && computerChoice == "Scissors") || 
-				(userChoice == "Scissors" && computerChoice == "Paper") ||
-				(userChoice == "Scissors" && computerChoice == "Paper"))
-            {
+				(userChoice == "rock" && computerChoice == "scissors") ||
+				(userChoice == "scissors" && computerChoice == "paper") ||
+				(userChoice == "paper" && computerChoice == "rock"))
+			{
 				Console.WriteLine("win");
 			}
 			else
-            {
-				Console.WriteLine("lose lmao");
+			{
+			Console.WriteLine("lose lmao");
 			}
 			Console.WriteLine(" ");
 
@@ -116,7 +120,7 @@ namespace ConsoleApp1
 			Console.WriteLine("1 to stay, any key to go back to menu");
 			string choice = Console.ReadLine();
 			switch (choice)
-            {
+			{
 				case "1":
 					rock();
 					break;
@@ -124,13 +128,30 @@ namespace ConsoleApp1
 				default:
 					Console.Clear();
 					break;
-            }
+			}
 		}
+		
 
 		static void ttt()
 		{
 			//refresh screen
 			Console.Clear();
+
+			//ttt
+			Console.WriteLine("You are player X.\nYour friend is player O.\nPlayer O goes first!");
+
+			//ttt array tiles
+			string[] board =
+			{
+			"1", "2", "3",
+			"4", "5", "6",
+			"7", "8", "9"
+			};
+
+            //see the tiles visible
+            Console.WriteLine(board[0] + board[1] + board[2]);
+			Console.WriteLine(board[3] + board[4] + board[5]);
+			Console.WriteLine(board[6] + board[7] + board[8]);
 
 			// select the ttt tile
 			Console.WriteLine("select tile, x's turn:");
