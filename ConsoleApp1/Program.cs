@@ -25,12 +25,12 @@ namespace ConsoleApp1
 
 				//a
 				Console.WriteLine("Hello," + firstName + "!");
-				Console.WriteLine("1 rockps");
-				Console.WriteLine("2 tictactoe");
+				Console.WriteLine("Enter 1 to play Rock Paper Scissors");
+				Console.WriteLine("Enter 2 to play TIc Tac Toe");
 
 				//save user under a name for this
-				Console.WriteLine("3 leaderboard");
-				Console.WriteLine("4 settings or smth");
+				Console.WriteLine("Enter 3 to see Leaderboard");
+				Console.WriteLine("Enter 4 to see settings");
 
 
 				//choice
@@ -73,7 +73,6 @@ namespace ConsoleApp1
 
 			// select the rock paper sciccors
 			string[] choices = { "rock", "scissors", "paper" };
-			bool isContained = true;
 
 			Console.WriteLine("Enter rock, scissors or paper");
 			string userChoice = Console.ReadLine().ToLower();
@@ -85,8 +84,8 @@ namespace ConsoleApp1
 			}
 			else
 			{
-				Console.WriteLine("Invalid option, type your choice correctly.");
-				Task.Wait();
+				Console.WriteLine("Invalid option, type your choice correctly.\nEnter to continue;");
+				Console.ReadLine();
 				rock();
 			}
 
@@ -141,17 +140,17 @@ namespace ConsoleApp1
 			Console.WriteLine("You are player X.\nYour friend is player O.\nPlayer O goes first!");
 
 			//ttt array tiles
-			string[] board =
+			string[,] board =
 			{
-			"1", "2", "3",
-			"4", "5", "6",
-			"7", "8", "9"
+				{ "1", "2", "3" },
+				{ "4", "5", "6" },
+				{ "7", "8", "9"}
 			};
 
-            //see the tiles visible
-            Console.WriteLine(board[0] + board[1] + board[2]);
-			Console.WriteLine(board[3] + board[4] + board[5]);
-			Console.WriteLine(board[6] + board[7] + board[8]);
+			//see the tiles visible
+			Console.WriteLine(board[0, 0] + board[0, 1] + board[0, 2]);
+			Console.WriteLine(board[1, 0] + board[1, 1] + board[1, 2]);
+			Console.WriteLine(board[2, 0] + board[2, 1] + board[2, 2]);
 
 			// select the ttt tile
 			Console.WriteLine("select tile, x's turn:");
