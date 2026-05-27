@@ -15,14 +15,14 @@ namespace ConsoleApp1
         static void Main()
         {
             // user enter
-            System.Threading.Thread.Sleep(100);
+            Task.Delay(100).Wait();
             Console.WriteLine("Please enter username:");
             string firstName = Console.ReadLine();
-            System.Threading.Thread.Sleep(100);
+            Task.Delay(100).Wait();
 
             if (string.IsNullOrEmpty(firstName))
             {
-                System.Threading.Thread.Sleep(100);
+                Task.Delay(100).Wait();
                 Console.WriteLine("\nYour name can't be empty, type it correctly.\nPress any key to try again");
                 Console.ReadKey();
                 Console.Clear();
@@ -35,27 +35,22 @@ namespace ConsoleApp1
                 //refresh screen
                 Console.Clear();
 
-                System.Threading.Thread.Sleep(100);
+                Task.Delay(100).Wait();
                 //a
                 Console.WriteLine("Hello, " + firstName + "!\n");
 
-                System.Threading.Thread.Sleep(100);
+                Task.Delay(100).Wait();
                 Console.WriteLine("Enter 1 to play Rock Paper Scissors");
 
-                System.Threading.Thread.Sleep(100);
+                Task.Delay(100).Wait();
                 Console.WriteLine("Enter 2 to play Tic Tac Toe");
 
                 //save user under a name for this or smth else but make it unique
-                System.Threading.Thread.Sleep(100);
+                Task.Delay(100).Wait();
                 Console.WriteLine("Enter 3 to enter your Aquarium");
 
-                //exit  and restart
-                System.Threading.Thread.Sleep(100);
-                Console.WriteLine("\nEnter 4 to Quit");
-
-
                 //choice
-                System.Threading.Thread.Sleep(100);
+                Task.Delay(100).Wait();
                 string choice = Console.ReadLine();
 
                 //choice
@@ -74,7 +69,7 @@ namespace ConsoleApp1
                         break;
 
                     default:
-                        System.Threading.Thread.Sleep(100);
+                        Task.Delay(100).Wait();
                         Console.WriteLine("\nInvalid option, type your choice correctly.\nEnter to continue;\n");
                         Console.ReadLine();
                         break;
@@ -97,47 +92,47 @@ namespace ConsoleApp1
             string userChoice = Console.ReadLine().ToLower();
 
             // check
-            System.Threading.Thread.Sleep(100);
+            Task.Delay(100).Wait();
             if (choices.Contains(userChoice))
             {
                 Console.WriteLine("\nYou chose " + userChoice + "!");
+                
+                //comupter select
+                Random rand = new Random();
+                string computerChoice = choices[rand.Next(choices.Length)];
+                Console.WriteLine("The computer chose " + computerChoice + "!");
+
+                //suspense
+                Task.Delay(100).Wait();
+                Console.WriteLine("\n  ...\n");
+                Task.Delay(100).Wait();
+
+                //check
+                if (userChoice == computerChoice)
+                {
+                    Console.WriteLine("  tie");
+                }
+                else if (
+                    (userChoice == "rock" && computerChoice == "scissors") ||
+                    (userChoice == "scissors" && computerChoice == "paper") ||
+                    (userChoice == "paper" && computerChoice == "rock"))
+                {
+                    Console.WriteLine("  win");
+                }
+                else
+                {
+                    Console.WriteLine("  lose lmao");
+                }
             }
             else
             {
                 Console.WriteLine("Invalid option, Type your choice correctly.\nTaking you back to selection");
-                System.Threading.Thread.Sleep(700);
+                Task.Delay(100).Wait();
                 rock();
             }
 
-            //comupter select
-            Random rand = new Random();
-            string computerChoice = choices[rand.Next(choices.Length)];
-            Console.WriteLine("The computer chose " + computerChoice + "!");
-
-            //suspense
-            System.Threading.Thread.Sleep(100);
-            Console.WriteLine("\n  ...\n");
-            System.Threading.Thread.Sleep(1000);
-
-            //check
-            if (userChoice == computerChoice)
-            {
-                Console.WriteLine("  tie");
-            }
-            else if (
-                (userChoice == "rock" && computerChoice == "scissors") ||
-                (userChoice == "scissors" && computerChoice == "paper") ||
-                (userChoice == "paper" && computerChoice == "rock"))
-            {
-                Console.WriteLine("  win");
-            }
-            else
-            {
-                Console.WriteLine("  lose lmao");
-            }
-
             //go back to menu, or stay
-            System.Threading.Thread.Sleep(200);
+            Task.Delay(100).Wait();
             Console.WriteLine("\nType and enter 1 to stay and play again, Enter to go back to menu.");
             string choice = Console.ReadLine();
             switch (choice)
@@ -157,7 +152,7 @@ namespace ConsoleApp1
             //refresh screen and intro
             Console.Clear();
             Console.WriteLine("Welcome to Tic Tac Toe!\n");
-            System.Threading.Thread.Sleep(100);
+            Task.Delay(100).Wait();
             bool tttPlaying = true;
 
             //ttt array tiles
@@ -180,7 +175,7 @@ namespace ConsoleApp1
             {
                 //clear
                 Console.Clear();
-                System.Threading.Thread.Sleep(100);
+                Task.Delay(100).Wait();
 
                 Console.WriteLine(playBoard[0, 0] + " | " + playBoard[0, 1] + " | " + playBoard[0, 2]);
                 Console.WriteLine("----------");
@@ -188,7 +183,7 @@ namespace ConsoleApp1
                 Console.WriteLine("----------");
                 Console.WriteLine(playBoard[2, 0] + " | " + playBoard[2, 1] + " | " + playBoard[2, 2]);
                 Console.WriteLine("\n");
-                System.Threading.Thread.Sleep(100);
+                Task.Delay(100).Wait();
 
                 // select the ttt tile and check
 
@@ -203,9 +198,9 @@ namespace ConsoleApp1
                         if (checkWin())
                         {
                             Console.Clear();
-                            System.Threading.Thread.Sleep(100);
+                            Task.Delay(100).Wait();
                             Console.WriteLine("Loading..\n");
-                            System.Threading.Thread.Sleep(400);
+                            Task.Delay(100).Wait();
 
                             Console.WriteLine(currentPlayer + " won!\nAny key to leave.");
                             Console.ReadKey();
@@ -213,9 +208,9 @@ namespace ConsoleApp1
                         else if (checkTie())
                         {
                             Console.Clear();
-                            System.Threading.Thread.Sleep(100);
+                            Task.Delay(100).Wait();
                             Console.WriteLine("Loading..\n");
-                            System.Threading.Thread.Sleep(400);
+                            Task.Delay(100).Wait();
 
                             Console.WriteLine("Its a tie, no one won.\nAny key to leave to leave");
                             Console.ReadKey();
@@ -224,7 +219,7 @@ namespace ConsoleApp1
                     }
                     else
                     {
-                        System.Threading.Thread.Sleep(100);
+                        Task.Delay(100).Wait();
                         Console.WriteLine("\nInvalid input, any key to try again.");
                         Console.ReadKey();
                     }
@@ -260,9 +255,9 @@ namespace ConsoleApp1
                         if (checkWin())
                         {
                             Console.Clear();
-                            System.Threading.Thread.Sleep(100);
+                            Task.Delay(100).Wait();
                             Console.WriteLine("Loading..\n");
-                            System.Threading.Thread.Sleep(400);
+                            Task.Delay(100).Wait();
 
                             Console.WriteLine(currentPlayer + " won!\nAny key to leave.");
                             Console.ReadKey();
@@ -270,9 +265,9 @@ namespace ConsoleApp1
                         else if (checkTie())
                         {
                             Console.Clear();
-                            System.Threading.Thread.Sleep(100);
+                            Task.Delay(100).Wait();
                             Console.WriteLine("Loading..\n");
-                            System.Threading.Thread.Sleep(400);
+                            Task.Delay(100).Wait();
 
                             Console.WriteLine("Its a tie, no one won.\nAny key to leave to leave");
                             Console.ReadKey();
@@ -281,7 +276,7 @@ namespace ConsoleApp1
                     }
                     else
                     {
-                        System.Threading.Thread.Sleep(100);
+                        Task.Delay(100).Wait();
                         Console.WriteLine("Invalid input, any key to try again.");
                         Console.ReadKey();
                     }
@@ -381,7 +376,7 @@ namespace ConsoleApp1
             //the tank
             Console.OutputEncoding = Encoding.UTF8;
             Console.InputEncoding = Encoding.UTF8;
-            System.Threading.Thread.Sleep(150);
+            Task.Delay(100).Wait();
             Console.WriteLine("Your aquarium:\n\n");
 
             Console.WriteLine("      +                |+ ");
@@ -402,13 +397,13 @@ namespace ConsoleApp1
                 "is dreaming of the sea.",
                 "wants to leave the aquarium. It tells you to type in Let Go before pressing enter to go back home."};
 
-            System.Threading.Thread.Sleep(200);
+            Task.Delay(200).Wait();
             Console.WriteLine("Your fish is feeling very " + fishMood[rand.Next(fishMood.Length)] + " today!\n");
-            System.Threading.Thread.Sleep(100);
+            Task.Delay(100).Wait();
             Console.WriteLine("Your fish " + fishThoughts[rand.Next(fishThoughts.Length)]);
 
             // Leave or let the fish go
-            System.Threading.Thread.Sleep(100);
+            Task.Delay(100).Wait();
             Console.WriteLine("\nType verbs to interact with the fish, such as: feed, pet, play\nEnter to go back to the main menu.");
             string choice = Console.ReadLine().ToLower();
             switch (choice)
@@ -417,44 +412,72 @@ namespace ConsoleApp1
                     break;
 
                 case "feed":
+                    Task.Delay(100).Wait();
                     Console.WriteLine("\nIt liked that. Enter any key to leave.");
+                    Task.Delay(100).Wait();
                     Console.ReadKey();
                     break;
 
                 case "pet":
+                    Task.Delay(100).Wait();
                     Console.WriteLine("\nYou can't pet fish, sorry. Enter any key to leave.");
+                    Task.Delay(100).Wait();
+                    Console.ReadKey();
+                    break;
+
+                case "annoy":
+                    Task.Delay(100).Wait();
+                    Console.WriteLine("\nIt hates you even more now. Enter any key to leave.");
+                    Task.Delay(100).Wait();
+                    Console.ReadKey();
+                    break;
+
+                case "eat":
+                    Task.Delay(100).Wait();
+                    Console.WriteLine("\n???");
+                    Task.Delay(600).Wait();
+                    Environment.Exit(0);
+                    break;
+
+                case "stare":
+                    Task.Delay(100).Wait();
+                    Console.WriteLine("\nIt feels self concious. Enter any key to leave.");
+                    Task.Delay(100).Wait();
                     Console.ReadKey();
                     break;
 
                 case "play":
                     string[] playWithFish = { "used a laser pointer", "swished around seaweed", "drove a boat toy", "couldn't find anything to play with"};
+                    Task.Delay(100).Wait();
                     Console.WriteLine("\nYou " + playWithFish[rand.Next(playWithFish.Length)] + ". It feels " + fishMood[rand.Next(fishMood.Length)] + " now. Enter any key to leave.");
+                    Task.Delay(100).Wait();
                     Console.ReadKey();
                     break;
 
                 case "let go":
-                    System.Threading.Thread.Sleep(100);
+                    Task.Delay(100).Wait();
                     Console.WriteLine("\nAre you sure? This will completly shut down the game,\nType in and enter yes or no\n");
+                    Task.Delay(100).Wait();
                     string quitDecision = Console.ReadLine().ToLower();
 
-                    System.Threading.Thread.Sleep(100);
+                    Task.Delay(100).Wait();
                     if (quitDecision == "yes")
                     {
                         Console.WriteLine("\nShutting down..");
-                        System.Threading.Thread.Sleep(500);
+                        Task.Delay(400).Wait();
                         Environment.Exit(0);
                         break;
                     }
                     else if (quitDecision == "no")
                     {
                         Console.WriteLine("\nOk, going back to the main menu.");
-                        System.Threading.Thread.Sleep(500);
+                        Task.Delay(600).Wait();
                         break;
                     }
                     else
                     {
                         Console.WriteLine("\nInvalid input, taking you back to the main menu.");
-                        System.Threading.Thread.Sleep(500);
+                        Task.Delay(600).Wait();
                         break;
 
                     }
