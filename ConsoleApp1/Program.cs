@@ -14,12 +14,19 @@ namespace ConsoleApp1
 
         static void Main()
         {
-            // user, don't save the user but save the name
+            // user enter
             System.Threading.Thread.Sleep(100);
             Console.WriteLine("Please enter username:");
             string firstName = Console.ReadLine();
-            System.Threading.Thread.Sleep(200);
+            System.Threading.Thread.Sleep(100);
 
+            if (string.IsNullOrEmpty(firstName))
+            {
+                System.Threading.Thread.Sleep(100);
+                Console.WriteLine("\nYour name can't be empty, type it correctly.\nPress any key to try again");
+                Console.ReadKey();
+                Main();
+            }
 
             // Menue
             while (true)
@@ -226,6 +233,8 @@ namespace ConsoleApp1
                     {
                         if (int.TryParse(tttInput, out int tttInputMove))
                         {
+                            if (tttInputMove > 9 || tttInputMove < 0) { return false; }
+
                             int tttRow = (tttInputMove - 1) / 3;
                             int tttCol = (tttInputMove - 1) % 3;
 
@@ -281,6 +290,7 @@ namespace ConsoleApp1
                     {
                         if (int.TryParse(tttInput, out int tttInputMove))
                         {
+                            if (tttInputMove > 9 || tttInputMove < 0) { return false; }
                             int tttRow = (tttInputMove - 1) / 3;
                             int tttCol = (tttInputMove - 1) % 3;
 
