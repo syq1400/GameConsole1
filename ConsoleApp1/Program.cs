@@ -25,6 +25,7 @@ namespace ConsoleApp1
                 System.Threading.Thread.Sleep(100);
                 Console.WriteLine("\nYour name can't be empty, type it correctly.\nPress any key to try again");
                 Console.ReadKey();
+                Console.Clear();
                 Main();
             }
 
